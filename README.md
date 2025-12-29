@@ -11,4 +11,15 @@ The script assumes you have [ffmpeg](https://www.ffmpeg.org/) in your path.
 The output is 1 frame per second using the default compression quality.
 
 ## skew_t.py
-Create a Skew-T png file from a source GRIB file. A Skew-T diagram allows for a visual interpretation of weather balloon data. A GRIB file in this context is output from a NAM forecast model. The GRIB format contains a grid of lat/lon points with a rich set of weather data for each point. This script takes one point from the GRIB file, processes it, and creates the Skew-T image.
+Creates a Skew-T png file from a source GRIB file. A Skew-T diagram allows for a visual interpretation of weather balloon data. A GRIB file in this context is output from a NAM forecast model. The GRIB format contains a grid of lat/lon points with a rich set of weather data for each point. This script takes one point from the GRIB file, processes it, and creates the Skew-T image.
+
+A Conda/Miniconda environment is used because the pygrib package won't build using pip/uv on Windows. To create the conda environent, navigate to the olie_skew-t folder and then:
+
+    cd src/olie_skew-t
+    conda env create -f environment.yml
+
+To create a sample file, execute:
+
+    python skew_t.py ../../sample_files/nam.t12z.awphys00.tm00.grib2 45.0 -93.0 kmsp
+
+![Sample skew-t](src/olie_skew-t/kmsp.png)
